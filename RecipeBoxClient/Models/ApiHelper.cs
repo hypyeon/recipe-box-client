@@ -5,7 +5,7 @@ namespace RecipeBoxClient.Models
 {
   public class ApiHelper
   {
-    public static async Task<string> GetAllRecipes()
+    public static async Task<string> GetRecipes()
     {
       RestClient client = new RestClient("http://localhost:5000/");
       RestRequest request = new RestRequest($"api/recipes", Method.Get);
@@ -41,6 +41,22 @@ namespace RecipeBoxClient.Models
       RestRequest request = new RestRequest($"api/recipes/{id}", Method.Delete);
       request.AddHeader("Content-Type", "application/json");
       await client.DeleteAsync(request);
+    }
+
+    public static async Task<string> GetIngredients()
+    {
+      RestClient client = new RestClient("http://localhost:5000/");
+      RestRequest request = new RestRequest($"api/ingredients", Method.Get);
+      RestResponse response = await client.GetAsync(request);
+      return response.Content;
+    }
+
+    public static async Task<string> GetCategories()
+    {
+      RestClient client = new RestClient("http://localhost:5000/");
+      RestRequest request = new RestRequest($"api/categories", Method.Get);
+      RestResponse response = await client.GetAsync(request);
+      return response.Content;
     }
   }
 }

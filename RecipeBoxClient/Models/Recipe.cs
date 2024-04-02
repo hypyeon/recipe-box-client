@@ -16,10 +16,10 @@ namespace RecipeBoxClient.Models
 
     public static List<Recipe> GetAll()
     {
-      var apiCallTask = ApiHelper.GetAllRecipes();
+      var apiCallTask = ApiHelper.GetRecipes();
       var result = apiCallTask.Result;
 
-      JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       List<Recipe> recipeList = JsonConvert.DeserializeObject<List<Recipe>>(jsonResponse.ToString());
 
       return recipeList;

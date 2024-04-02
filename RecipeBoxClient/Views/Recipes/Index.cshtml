@@ -1,8 +1,8 @@
 @{
-  ViewData["Title"] = "Recipes";
+  ViewData["Title"] = "Recipe List";
 }
 
-<h1>Recipe List:</h1>
+<h2>Recipe List</h2>
 
 <ol>
 @foreach (Recipe recipe in Model)
@@ -10,3 +10,7 @@
   <li><a href="/Recipes/Details/@(recipe.RecipeId)">@recipe.Title</a></li>
 }
 </ol>
+
+<div class="buttons">
+  <p>@Html.ActionLink("Create New Recipe", "Create")</p>
+</div>

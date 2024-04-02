@@ -1,0 +1,22 @@
+@{
+  ViewData["Title"] = $"Edit {Model.Title}";
+}
+
+@model RecipeBoxClient.Models.Recipe
+
+<h4>Edit @Model.Title</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.RecipeId)
+  @Html.LabelFor(model => model.Title, "Title: ")
+  @Html.TextBoxFor(model => model.Title, new { @Value = Model.Title})
+  <br />
+  @Html.LabelFor(model => model.Instruction, "Instructions: ")
+  @Html.TextBoxFor(model => model.Instruction, new { @Value = Model.Instruction })
+  <br />
+  <input type="submit" value="Update" class="btn btn-primary"/>
+}
+
+<br />
+<p>@Html.ActionLink($"Back to <{@Model.Title}> Recipe", "Details", new { id = @Model.RecipeId })</p>

@@ -1,0 +1,33 @@
+@{
+  ViewData["Title"] = "Recipe Instruction";
+}
+
+@model RecipeBoxClient.Models.Recipe
+@using RecipeBoxClient.Models
+
+<h1>@Model.Title</h1>
+
+<p>Category: @Html.DisplayFor(model => model.Category.Name)</p>
+
+<h4>Ingredients: </h4>
+@if (@Model.RecipeIngredients.Count == 0)
+{
+  <p>No ingredient has been registered yet. @Html.ActionLink("Add Ingredients", "AddIngredient")</p>
+}
+else {
+  <ul>
+  @foreach (RecipeIngredient ri in Model.RecipeIngredients)
+  {
+    <li>@ri.Ingredient.Name</li>
+  }
+  <p>@Html.ActionLink("Add", "AddIngredient")</p>
+  </ul>
+}
+
+<h4>Instructions: </h4>
+<p>@Model.Instruction</p>
+
+<div class="buttons">
+  <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = @Model.RecipeId })</p>
+  <p>@Html.ActionLink("Return to Recipe List", "Index")</p>
+</div>

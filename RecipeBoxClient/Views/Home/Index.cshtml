@@ -3,6 +3,12 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Recipe Box 👩🏻‍🍳📖</h1>
+    <p>Find out our amazing recipes built by certified cooks!</p>
+
+    <div>
+        <p>Are you a cerfitied cook? @Html.ActionLink("Sign in", "Login") to manage recipes.</p>
+        <p>View our recipes by @Html.ActionLink("categories", "Index", "Categories")</p>
+        <p>Search recipes by @Html.ActionLink("ingredients", "Index", "Ingredients")</p>
+    </div>
 </div>

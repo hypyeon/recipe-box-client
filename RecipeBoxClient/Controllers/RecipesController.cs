@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using RecipeBoxClient.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Threading;
 
 namespace RecipeBoxClient.Controllers;
 
@@ -17,20 +20,21 @@ public class RecipesController : Controller
   }
   public ActionResult Create()
   {
+    //List<Ingredient> ing = Ingredient.GetAll();
+    //ViewBag.IngredientId = new SelectList(ing, "IngredientId", "Name");
     return View();
   }
   [HttpPost]
   public ActionResult Create(Recipe recipe)
   {
     Recipe.Post(recipe);
-    return RedirectToAction("Index");
+    return RedirectToAction("Details", new { id = recipe.RecipeId });
   }
   public ActionResult Edit(int id)
   {
     Recipe recipe = Recipe.GetDetail(id);
     return View(recipe);
   }
-
   [HttpPost]
   public ActionResult Edit(Recipe recipe)
   {

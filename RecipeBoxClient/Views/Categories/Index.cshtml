@@ -1,0 +1,16 @@
+@{
+  ViewData["Title"] = "Category List";
+}
+
+<h2>Category List</h2>
+
+<ol>
+@foreach (Category cat in Model)
+{
+  <li><a href="/Categories/Details/@(cat.CategoryId)">@cat.Name</a></li>
+}
+</ol>
+
+<div class="buttons">
+  <p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+</div>

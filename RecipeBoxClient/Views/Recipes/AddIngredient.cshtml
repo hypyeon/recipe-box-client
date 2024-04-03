@@ -1,0 +1,24 @@
+@{
+  ViewData["Title"] = "Add Ingredient to Recipe";
+}
+
+@model RecipeBoxClient.Models.Recipe
+
+<h2>Add Ingredient to @Html.DisplayFor(model => model.Title)</h2>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.RecipeId)
+
+  @Html.Label("Ingredient List: ")
+  @Html.DropDownList("IngredientId")
+  <p>Don't see ingredient you need? Register @Html.ActionLink("here", "Create", "Ingredients").</p>
+
+  <input type="submit" value="Add" />
+}
+
+<div class="buttons">
+  <p>@Html.ActionLink($"Back to {@Model.Title}", "Details", new { id = @Model.RecipeId })</p>
+  <p>@Html.ActionLink("Recipe List", "Index")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+</div>

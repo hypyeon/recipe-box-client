@@ -1,0 +1,17 @@
+@{
+  ViewData["Title"] = "Ingredient List";
+}
+
+<h2>Registered Ingredients</h2>
+
+<ol>
+@foreach (Ingredient ingredient in Model)
+{
+  <li><a href="/Ingredients/Details/@(ingredient.IngredientId)">@ingredient.Name</a></li>
+}
+</ol>
+
+<div class="buttons">
+  <p>@Html.ActionLink("Register New Ingredient", "Create")</p>
+  <p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+</div>

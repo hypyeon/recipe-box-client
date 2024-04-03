@@ -1,0 +1,30 @@
+@{
+  ViewData["Title"] = "Ingredient";
+}
+
+@model RecipeBoxClient.Models.Ingredient
+@using RecipeBoxClient.Models
+
+<h1>@Model.Name</h1>
+
+@if (@Model.RecipeIngredients.Count == 0)
+{
+  <p>This ingredient does not belong to any recipe. </p>
+}
+else 
+{
+  <p>Recipes this ingredient belongs to: </p>
+  <ul>
+  @foreach (RecipeIngredient ri in Model.RecipeIngredients)
+  {
+    <li><a href="/Recipes/Details/@(ri.Recipe.RecipeId)">@ri.Recipe.Title</a></li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Name", "Edit")</p>
+<p>@Html.ActionLink("Delete this ingredient", "Delete")</p>
+
+<div class="buttons">
+  <p>@Html.ActionLink("Return to Ingredient List", "Index")</p>
+</div>

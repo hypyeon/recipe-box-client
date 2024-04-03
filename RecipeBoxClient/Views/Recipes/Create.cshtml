@@ -11,6 +11,9 @@
   @Html.LabelFor(model => model.Title, "Title: ")
   @Html.TextBoxFor(model => model.Title)
   <br />
+  @Html.LabelFor(model => model.Category, "Category: ")
+  @Html.DropDownList("CatId")
+  <br />
   @Html.LabelFor(model => model.Instruction, "Instructions: ")
   @Html.TextBoxFor(model => model.Instruction)
   <br />
@@ -18,4 +21,4 @@
 }
 
 <br />
-<p>@Html.ActionLink("Back to Recipe List", "Index")</p>
+<p>@Html.ActionLink("Recipe List", "Index")</p>

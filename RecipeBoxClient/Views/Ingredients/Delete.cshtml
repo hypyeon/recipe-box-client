@@ -1,0 +1,8 @@
+@model RecipeBoxClient.Models.Ingredient
+
+<p>Removing @Model.Name?</p>
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Yes, Delete" />
+}
+<p>@Html.ActionLink("Ingredient List", "Index")</p>

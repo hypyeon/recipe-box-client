@@ -1,0 +1,27 @@
+@{
+  ViewData["Title"] = $"{Model.Name} List";
+}
+
+@model RecipeBoxClient.Models.Category
+@using RecipeBoxClient.Models
+
+<h2>@Model.Name</h2>
+
+@if (@Model.Recipes.Count == 0)
+{
+  <p>No recipe has been registered yet. Go to @Html.ActionLink("Recipe List","Index", "Recipes") to add to this category.</p>
+}
+else 
+{
+  <ul>
+  @foreach (Recipe recipe in Model.Recipes)
+  {
+    <li><a href="/Recipes/Details/@(recipe.RecipeId)">@recipe.Title</a></li>
+  }
+  </ul>
+}
+
+<div class="buttons">
+  <p>@Html.ActionLink("Return to Category List", "Index")</p>
+  <p>@Html.ActionLink("Back to Home", "Index", "Home")</p>
+</div>

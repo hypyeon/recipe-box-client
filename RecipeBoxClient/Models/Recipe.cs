@@ -31,22 +31,26 @@ namespace RecipeBoxClient.Models
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Recipe recipe = JsonConvert.DeserializeObject<Recipe>(jsonResponse.ToString());
-
+      
       return recipe;
     }
     public static void Post(Recipe recipe)
     {
       string jsonRecipe = JsonConvert.SerializeObject(recipe);
-      ApiHelper.Post(jsonRecipe);
+      ApiHelper.PostRecipe(jsonRecipe);
     }
     public static void Put(Recipe recipe)
     {
       string jsonRecipe = JsonConvert.SerializeObject(recipe);
-      ApiHelper.Put(recipe.RecipeId, jsonRecipe);
+      ApiHelper.PutRecipe(recipe.RecipeId, jsonRecipe);
     }
     public static void Delete(int id)
     {
-      ApiHelper.Delete(id);
+      ApiHelper.DeleteRecipe(id);
+    }
+    public static void AddIngredient(int recipeId, int ingId)
+    {
+      ApiHelper.PostAddIngredient(recipeId, ingId);
     }
   }
 }

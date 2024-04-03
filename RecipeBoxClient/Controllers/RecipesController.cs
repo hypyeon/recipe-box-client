@@ -20,8 +20,8 @@ public class RecipesController : Controller
   }
   public ActionResult Create()
   {
-    //List<Ingredient> ing = Ingredient.GetAll();
-    //ViewBag.IngredientId = new SelectList(ing, "IngredientId", "Name");
+    List<Category> cat = Category.GetAll();
+    ViewBag.CatId = new SelectList(cat, "CategoryId", "Name");
     return View();
   }
   [HttpPost]
@@ -40,6 +40,20 @@ public class RecipesController : Controller
   {
     Recipe.Put(recipe);
     return RedirectToAction("Details", new { id = recipe.RecipeId});
+  }
+  public ActionResult AddIngredient(int id)
+  {
+    Recipe recipe = Recipe.GetDetail(id);
+    
+    List<Ingredient> ing = Ingredient.GetAll();
+    ViewBag.IngredientId = new SelectList(ing, "IngredientId", "Name");
+    return View(recipe);
+  }
+  [HttpPost]
+  public ActionResult AddIngredient(Recipe recipe)
+  {
+    Recipe.Post(recipe);
+    return RedirectToAction("Details", new { id = recipe.RecipeId });
   }
 
   public ActionResult Delete(int id)

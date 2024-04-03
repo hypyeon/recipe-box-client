@@ -13,4 +13,9 @@ public class CategoriesController : Controller
     List<Category> cats = Category.GetAll();
     return View(cats);
   }
+  public IActionResult Details(int id)
+  {
+    Category cat = Category.GetDetail(id);
+    return View(cat);
+  }
 }

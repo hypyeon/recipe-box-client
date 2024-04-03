@@ -21,5 +21,15 @@ namespace RecipeBoxClient.Models
 
       return catList;
     }
+    public static Category GetDetail(int id)
+    {
+      var apiCallTask = ApiHelper.GetCategoryDetail(id);
+      var result = apiCallTask.Result;
+
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      Category cat = JsonConvert.DeserializeObject<Category>(jsonResponse.ToString());
+
+      return cat;
+    }
   }
 }

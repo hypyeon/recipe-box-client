@@ -14,11 +14,12 @@
 {
   <p>No ingredient has been registered yet. @Html.ActionLink("Add Ingredients", "AddIngredient")</p>
 }
-else {
+else 
+{
   <ul>
   @foreach (RecipeIngredient ri in Model.RecipeIngredients)
   {
-    <li>@ri.Ingredient.Name</li>
+    <li><a href="/Ingredients/Details/@(ri.Ingredient.IngredientId)">@ri.Ingredient.Name</a></li>
   }
   <p>@Html.ActionLink("Add", "AddIngredient")</p>
   </ul>
